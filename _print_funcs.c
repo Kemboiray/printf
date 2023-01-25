@@ -43,16 +43,23 @@ int print_str(va_list arg)
 int print_int(va_list arg)
 {
 	int n = va_arg(arg, int);
-
-	if (n < 0)
-	{
+	int count = 0;
+	if (n < 0) {
 		_putchar('-');
+		count++;
 		n = -n;
 	}
-	if (n > 9)
-		print_int(n / 10);
-	_putchar(n % 10 + '0');
-	return (1);
+	int number = n;
+	int digits = 1;
+	while (number > 9) {
+		number /= 10;
+		digits++;
+	}
+	for (int i = 0; i < digits; i++) {
+		_putchar((n % (int)pow(10, i + 1) / (int)pow(10, i)) + '0');
+		count++;
+	}
+	return count;
 }
 
 /**
