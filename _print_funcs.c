@@ -8,7 +8,7 @@
  */
 int print_char(va_list arg)
 {
-    return (_putchar(va_arg(arg, int)));
+	return (_putchar(va_arg(arg, int)));
 }
 
 /**
@@ -19,19 +19,20 @@ int print_char(va_list arg)
  */
 int print_str(va_list arg)
 {
-    char *str = va_arg(arg, char *);
+	char *str = va_arg(arg, char *);
 
-    if (str == NULL)
-        str = "(null)";
+	if (str == NULL)
+		str = "(null)";
 
-    int count = 0;
-    while (*str)
-    {
-        _putchar(*str);
-        str++;
-        count++;
-    }
-    return (count);
+	int count = 0;
+
+	while (*str)
+	{
+		_putchar(*str);
+		str++;
+		count++;
+	}
+	return (count);
 }
 #if 0
 /**
@@ -42,16 +43,17 @@ int print_str(va_list arg)
  */
 int print_int(va_list arg)
 {
-    int n = va_arg(arg, int);
-    if (n < 0)
-    {
-        _putchar('-');
-        n = -n;
-    }
-    if (n > 9)
-        print_int(n / 10);
-    _putchar(n % 10 + '0');
-    return 1;
+	int n = va_arg(arg, int);
+
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+	}
+	if (n > 9)
+		print_int(n / 10);
+	_putchar(n % 10 + '0');
+	return (1);
 }
 
 /**
@@ -62,13 +64,14 @@ int print_int(va_list arg)
  */
 int print_unsigned(va_list arg)
 {
-    unsigned int n = va_arg(arg, unsigned int);
-    int count = 0;
-    if (n > 9)
-        count += print_unsigned(n / 10);
-    _putchar(n % 10 + '0');
-    count++;
-    return count;
+	unsigned int n = va_arg(arg, unsigned int);
+	unsigned int count = 0;
+
+	if (n > 9)
+	/*	count += print_unsigned(n / 10);*/
+	_putchar(n % 10 + '0');
+	count++;
+	return (count);
 }
 #endif
 /**
@@ -78,7 +81,7 @@ int print_unsigned(va_list arg)
  */
 int print_percent(void)
 {
-    _putchar('%');
-    return 1;
+	_putchar('%');
+	return (1);
 }
 
