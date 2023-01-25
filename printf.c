@@ -36,8 +36,6 @@ int _printf(const char *format, ...)
 						retval += 1;
 					}
 					break;
-				default:
-					break;
 			}
 			i++;
 		}
