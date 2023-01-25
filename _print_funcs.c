@@ -33,7 +33,7 @@ int print_str(va_list arg)
 	}
 	return (count);
 }
-#if 0
+
 /**
  * print_int - prints an integer
  * @arg: va_list containing the integer to be printed
@@ -44,22 +44,30 @@ int print_int(va_list arg)
 {
 	int n = va_arg(arg, int);
 	int count = 0;
-	if (n < 0) {
+
+	if (n < 0)
+	{
 		_putchar('-');
 		count++;
 		n = -n;
 	}
+
 	int number = n;
 	int digits = 1;
-	while (number > 9) {
+
+	while (number > 9)
+	{
 		number /= 10;
 		digits++;
 	}
-	for (int i = 0; i < digits; i++) {
+	int i;
+
+	for (i = 0; i < digits; i++)
+	{
 		_putchar((n % (int)pow(10, i + 1) / (int)pow(10, i)) + '0');
 		count++;
 	}
-	return count;
+	return (count);
 }
 
 /**
@@ -79,7 +87,7 @@ int print_unsigned(va_list arg)
 	count++;
 	return (count);
 }
-#endif
+
 /**
  * print_percent - prints a percent sign
  *
