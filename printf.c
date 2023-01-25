@@ -32,9 +32,9 @@ int _printf(const char *format, ...)
 					count += print_int(args);
 					break;
 #endif
-				default:
-					_putchar('%');
-					count++;
+				case '%':
+					count += print_percent();
+					break;
 			}
 		}
 		else
