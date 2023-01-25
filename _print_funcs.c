@@ -42,8 +42,7 @@ int print_str(va_list arg)
  */
 int print_int(va_list arg)
 {
-	int n = va_arg(arg, int);
-	int count = 0;
+	int n = va_arg(arg, int), count = 0, number, digits, i;
 
 	if (n < 0)
 	{
@@ -52,15 +51,14 @@ int print_int(va_list arg)
 		n = -n;
 	}
 
-	int number = n;
-	int digits = 1;
+	number = n;
+	digits = 1;
 
 	while (number > 9)
 	{
 		number /= 10;
 		digits++;
 	}
-	int i;
 
 	for (i = 0; i < digits; i++)
 	{
