@@ -13,6 +13,8 @@ int _printf(const char *format, ...)
 	unsigned int i = 0, j, retval = 0;
 	char *str;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	while (format && format[i])
 	{
