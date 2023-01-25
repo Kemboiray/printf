@@ -2,7 +2,7 @@
 
 ## printf Collab Project:
 
-```Kemboiray x FourtyThree43``
+```Kemboiray x FourtyThree43```
 
 ## 0x11. C - printf
 
