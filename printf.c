@@ -2,50 +2,48 @@
 
 /**
  * _printf - produces output according to a format
- * @format: format string
+ * @format: format string that contains plain text and conversion specifications
  *
- * Return: number of characters printed (excluding the null byte used to end
- * output to strings)
-*/
+ * Return: number of characters written
+ */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	unsigned int i = 0, j, retval = 0;
-	char *str;
+    va_list args;
+    va_start(args, format);
 
-	if (format == NULL)
-		return (-1);
-	va_start(args, format);
-	while (format && format[i])
-	{
-		if (format[i] == '%')
-		{
-			switch (format[i + 1])
-			{
-				case 'c':
-					_putchar(va_arg(args, int));
-					retval += 1;
-					break;
-				case 's':
-					str = va_arg(args, char *);
-					if (str == NULL)
-						str = "(null)";
-					for (j = 0; str[j]; j++)
-					{
-						_putchar(str[j]);
-						retval += 1;
-					}
-					break;
-			}
-			i++;
-		}
-		else
-		{
-			_putchar(format[i]);
-			retval += 1;
-		}
-		i++;
-	}
-	va_end(args);
-	return (retval);
+    int count = 0;
+    while (*format)
+    {
+        if (*format == '%')
+        {
+            format++;
+            switch (*format)
+            {
+                case 'c':
+                    count += print_char(args);
+                    break;
+                case 's':
+                    count += print_str(args);
+                    break;
+#if 0
+                case 'd':
+                case 'i':
+                    count += print_int(args);
+                    break;
+#endif
+                default:
+                    _putchar('%');
+                    count++;
+            }
+        }
+        else
+        {
+            _putchar(*format);
+            count++;
+        }
+        format++;
+    }
+
+    va_end(args);
+    return (count);
 }
