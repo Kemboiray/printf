@@ -11,7 +11,7 @@ int _printf(const char *format, ...);
 int print_char(va_list arg);
 int print_str(va_list arg);
 int print_percent(void);
-/*int print_int(va_list arg);*/
-/*int print_unsigned(va_list arg);*/
+int print_int(va_list arg);
+int print_unsigned(va_list arg);
 
 #endif

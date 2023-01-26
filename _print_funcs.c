@@ -77,7 +77,7 @@ int print_int(va_list arg)
 int print_unsigned(va_list arg)
 {
 	unsigned int n = va_arg(arg, unsigned int);
-	unsigned int count = 0;
+	int count = 0;
 
 	if (n > 9)
 	/*	count += print_unsigned(n / 10);*/

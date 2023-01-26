@@ -28,12 +28,12 @@ int _printf(const char *format, ...)
 				case 's':
 					count += print_str(args);
 					break;
-#if 0
+
 				case 'd':
 				case 'i':
 					count += print_int(args);
 					break;
-#endif
+
 				case '%':
 					count += print_percent();
 					break;
