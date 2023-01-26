@@ -61,3 +61,39 @@ int print_int(int n)
 	free(array);
 	return (size2 + 1);
 }
+
+/**
+ * print_binary - prints to stdout
+ * @n: integer to print
+ *
+ * Return: size of integer printed
+ */
+int print_binary(unsigned int n)
+{
+	int count = 0;
+
+	if (n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	count = print_binary_recursion(n);
+	return (count);
+}
+
+/**
+ * print_binary_recursion - prints to stdout
+ * @n: integer to print
+ *
+ * Return: size of integer printed
+ */
+int print_binary_recursion(unsigned int n)
+{
+	int count = 0;
+
+	if (n == 0)
+		return (0);
+	count = print_binary_recursion(n >> 1);
+	_putchar((n & 1) ? '1' : '0');
+	return (count + 1);
+}
