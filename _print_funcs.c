@@ -62,7 +62,8 @@ int print_int(va_list arg)
 
 	for (i = 0; i < digits; i++)
 	{
-		_putchar((n % (int)pow(10, i + 1) / (int)pow(10, i)) + '0');
+		/*_putchar((n % (int)pow(10, i + 1) / (int)pow(10, i)) + '0');*/
+		_putchar(48);
 		count++;
 	}
 	return (count);
