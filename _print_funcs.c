@@ -38,21 +38,35 @@ int print_str(va_list arg)
  * print_int - prints an integer
  * @arg: va_list containing the integer to be printed
  *
- * Return: the number of characters printed
+ * Return: 1
  */
 int print_int(va_list arg)
 {
-	int n = va_arg(arg, int);
+	int n = va_arg(arg, int), count = 0, number, digits, i;
 
 	if (n < 0)
 	{
 		_putchar('-');
+		count++;
 		n = -n;
 	}
-	if (n > 9)
-		print_int(n / 10);
-	_putchar(n % 10 + '0');
-	return (1);
+
+	number = n;
+	digits = 1;
+
+	while (number > 9)
+	{
+		number /= 10;
+		digits++;
+	}
+
+	for (i = 0; i < digits; i++)
+	{
+		/*_putchar((n % (int)pow(10, i + 1) / (int)pow(10, i)) + '0');*/
+		_putchar(48);
+		count++;
+	}
+	return (count);
 }
 
 /**
