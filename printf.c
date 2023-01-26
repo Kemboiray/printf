@@ -28,25 +28,25 @@ int _printf(const char *format, ...)
 				case 's':
 					count += print_str(args);
 					break;
-
 				case 'd':
 				case 'i':
 					count += print_int(args);
 					break;
-
 				case '%':
 					count += print_percent();
+					break;
+				default:
+					_putchar('%');
+					count += _putchar(*format);
 					break;
 			}
 		}
 		else
 		{
-			_putchar(*format);
-			count++;
+			count += _putchar(*format);
 		}
 		format++;
 	}
-
 	va_end(args);
 	return (count);
 }
