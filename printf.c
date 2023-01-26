@@ -28,8 +28,8 @@ int _printf(const char *format, ...)
 				case 's':
 					count += print_str(args);
 					break;
-				case 'd':
-				case 'i':
+				case 'd' || 'i':
+				/*case 'i':*/
 					count += print_int(args);
 					break;
 				case '%':

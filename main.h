@@ -8,6 +8,7 @@
 /* PROTOTYPES */
 int _putchar(char c);
 int _printf(const char *format, ...);
+void printcs(const char *format, int *count_ptr, va_list args);
 int print_char(va_list arg);
 int print_str(va_list arg);
 int print_percent(void);
