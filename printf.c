@@ -11,10 +11,27 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
+	int *count_ptr = &count;
 
 	va_start(args, format);
 	if (format == NULL)
 		return (-1);
+
+	printcs(format, count_ptr, args);
+	va_end(args);
+	return (count);
+}
+
+/**
+ * printcs - print format string, arguments and update return value
+ * @format: format string
+ * @count_ptr: pointer to count
+ * @args: args
+ *
+ * Return: void.
+*/
+void printcs(const char *format, int *count_ptr, va_list args)
+{
 	while (*format)
 	{
 		if (*format == '%')
@@ -23,30 +40,28 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					count += print_char(args);
+					*count_ptr += print_char(args);
 					break;
 				case 's':
-					count += print_str(args);
+					*count_ptr += print_str(args);
 					break;
-				case 'd' || 'i':
-				/*case 'i':*/
-					count += print_int(args);
+				case 'd':
+				case 'i':
+					*count_ptr += print_int(va_arg(args, int));
 					break;
 				case '%':
-					count += print_percent();
+					*count_ptr += print_percent();
 					break;
 				default:
 					_putchar('%');
-					count += _putchar(*format);
+					*count_ptr += _putchar(*format);
 					break;
 			}
 		}
 		else
 		{
-			count += _putchar(*format);
+			*count_ptr += _putchar(*format);
 		}
 		format++;
 	}
-	va_end(args);
-	return (count);
 }
