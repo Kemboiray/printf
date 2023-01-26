@@ -3,7 +3,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
-#include <math.h>
+/*#include <math.h>*/
 
 /* PROTOTYPES */
 int _putchar(char c);
