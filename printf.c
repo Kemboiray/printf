@@ -39,6 +39,7 @@ void printcs(const char *format, int *count_ptr, va_list args)
 			format++;
 			if (*format)
 			{
+<<<<<<< HEAD
 				switch (*format)
 				{
 					case 'c':
@@ -62,6 +63,28 @@ void printcs(const char *format, int *count_ptr, va_list args)
 						*count_ptr += 2 + _putchar(*format);
 						break;
 				}
+=======
+				case 'c':
+					*count_ptr += print_char(args);
+					break;
+				case 's':
+					*count_ptr += print_str(args);
+					break;
+				case 'd':
+				case 'i':
+					*count_ptr += print_int(va_arg(args, int));
+					break;
+				case 'b':
+					*count_ptr += print_binary(va_arg(args, unsigned int));
+					break;
+				case '%':
+					*count_ptr += print_percent();
+					break;
+				default:
+					_putchar('%');
+					*count_ptr += _putchar(*format);
+					break;
+>>>>>>> parent of 43dc173... Ishallah. - Timestamp: 1674774177
 			}
 			else
 				*count_ptr = -1;
