@@ -1,0 +1,56 @@
+#include "main.h"
+
+/**
+ * _printf - produces output according to a format
+ * @format: format string that contains plain text and conversion
+ * specifications
+ *
+ * Return: number of characters written
+ */
+int _printf(const char *format, ...)
+{
+	va_list args;
+	int count = 0;
+	int *count_ptr = &count;
+
+	va_start(args, format);
+	if (format == NULL)
+		return (-1);
+
+	printcs(format, count_ptr, args);
+	va_end(args);
+	return (count);
+}
+
+/**
+ * printcs - print format string, arguments and update return value
+ * @format: format string
+ * @count_ptr: pointer to count
+ * @args: args
+ *
+ * Return: void.
+*/
+void printcs(const char *format, int *count_ptr, va_list args)
+{
+    int (*conversions[256])(va_list, int *);
+    int count = 0;
+    char c;
+
+    init_conversions(conversions);
+
+    while ((c = *format++))
+    {
+        if (c != '%')
+        {
+            _putchar(c);
+            count++;
+        }
+        else
+        {
+            c = *format++;
+            count += conversions[(unsigned char)c](args, &count);
+        }
+    }
+
+    *count_ptr = count;
+}

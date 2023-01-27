@@ -1,0 +1,39 @@
+int (*conversion_functions[256])(va_list) = {
+    ['c'] = print_char,
+    ['s'] = print_str,
+    ['d'] = print_int,
+    ['i'] = print_int,
+    ['b'] = print_binary,
+    ['u'] = print_unsigned,
+    ['o'] = print_octal,
+    ['x'] = print_hex_lower,
+    ['X'] = print_hex_upper,
+    ['%'] = print_percent
+};
+
+const char *valid_specifiers = "csdibuxX%";
+
+void printcs(const char *format, int *count_ptr, va_list args)
+{
+    while (*format)
+    {
+        if (*format == '%')
+        {
+            format++;
+            if (strchr(valid_specifiers, *format) != NULL)
+            {
+                *count_ptr += conversion_functions[*format](args);
+            }
+            else
+            {
+                _putchar('%');
+                *count_ptr += _putchar(*format);
+            }
+        }
+        else
+        {
+            *count_ptr += _putchar(*format);
+        }
+        format++;
+    }
+}
