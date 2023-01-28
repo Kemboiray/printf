@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int *count_ptr = &count;
 
 	va_start(args, format);
-	if (format == NULL)
+	if (format == NULL || (format[0] == 37 && format[1] == 0))
 		return (-1);
 
 	printcs(format, count_ptr, args);
@@ -37,10 +37,10 @@ void printcs(const char *format, int *count_ptr, va_list args)
 		if (*format == '%')
 		{
 			format++;
-			if (*format)
-			{
-<<<<<<< HEAD
-				switch (*format)
+/*
+*			if (*format)
+*			{
+*/				switch (*format)
 				{
 					case 'c':
 						*count_ptr += print_char(args);
@@ -55,41 +55,32 @@ void printcs(const char *format, int *count_ptr, va_list args)
 					case 'b':
 						*count_ptr += print_binary(va_arg(args, unsigned int));
 						break;
+					case 'u':
+						*count_ptr += print_unsigned(va_arg(args, unsigned int), 10);
+						break;
+					case 'o':
+						*count_ptr += print_unsigned(va_arg(args, unsigned int), 8);
+						break;
+					case 'x':
+						*count_ptr += print_unsigned(va_arg(args, unsigned int), 16);
+						break;
+					case 'X':
+						*count_ptr += print_unsigned_uppercase(va_arg(args, unsigned int), 16);
+						break;
 					case '%':
 						*count_ptr += print_percent();
 						break;
 					default:
 						_putchar('%');
-						*count_ptr += 2 + _putchar(*format);
+						*count_ptr += 1 + _putchar(*format);
 						break;
 				}
-=======
-				case 'c':
-					*count_ptr += print_char(args);
-					break;
-				case 's':
-					*count_ptr += print_str(args);
-					break;
-				case 'd':
-				case 'i':
-					*count_ptr += print_int(va_arg(args, int));
-					break;
-				case 'b':
-					*count_ptr += print_binary(va_arg(args, unsigned int));
-					break;
-				case '%':
-					*count_ptr += print_percent();
-					break;
-				default:
-					_putchar('%');
-					*count_ptr += _putchar(*format);
-					break;
->>>>>>> parent of 43dc173... Ishallah. - Timestamp: 1674774177
-			}
-			else
-				*count_ptr = -1;
-			return;
-		}
+/*
+*			}
+*			else
+*				*count_ptr = -1;
+*			return;
+*/		}
 		else
 
 			*count_ptr += _putchar(*format);

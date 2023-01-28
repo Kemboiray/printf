@@ -17,7 +17,10 @@ int print_percent(void);
 /*int print_int(va_list arg);*/
 int arsize(int n);
 int print_int(int n);
-/*int print_unsigned(va_list arg);*/
+int print_unsigned(unsigned int n, int base);
+int print_unsigned_uppercase(unsigned int n, int base);
+int print_unsigned_recursive(unsigned int n, int base);
+int print_unsigned_recursive_uppercase(unsigned int n, int base);
 int print_binary(unsigned int n);
 int print_binary_recursion(unsigned int n);
 
