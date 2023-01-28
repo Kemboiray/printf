@@ -67,6 +67,9 @@ void printcs(const char *format, int *count_ptr, va_list args)
 					case 'S':
 						*count_ptr += print_custom_S(va_arg(args, char *));
 						break;
+						case 'p':
+						*count_ptr += print_pointer_hash(va_arg(args, void *));
+						break;
 					case '%':
 						*count_ptr += print_percent();
 						break;

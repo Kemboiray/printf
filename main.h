@@ -26,5 +26,6 @@ int print_binary(unsigned int n);
 int print_binary_recursion(unsigned int n);
 int print_custom_S(char *s);
 char int_to_hex(int i);
+int print_pointer_hash(void *ptr);
 
 #endif
