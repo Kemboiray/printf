@@ -49,6 +49,21 @@ void printcs(const char *format, int *count_ptr, va_list args)
 					case 'i':
 						*count_ptr += print_int(va_arg(args, int));
 						break;
+					case 'b':
+						*count_ptr += print_binary(va_arg(args, unsigned int));
+						break;
+					case 'u':
+						*count_ptr += print_unsigned(va_arg(args, unsigned int), 10);
+						break;
+					case 'o':
+						*count_ptr += print_unsigned(va_arg(args, unsigned int), 8);
+						break;
+					case 'x':
+						*count_ptr += print_unsigned(va_arg(args, unsigned int), 16);
+						break;
+					case 'X':
+						*count_ptr += print_unsigned_uppercase(va_arg(args, unsigned int), 16);
+						break;
 					case '%':
 						*count_ptr += print_percent();
 						break;
