@@ -64,6 +64,9 @@ void printcs(const char *format, int *count_ptr, va_list args)
 					case 'X':
 						*count_ptr += print_unsigned_uppercase(va_arg(args, unsigned int), 16);
 						break;
+					case 'S':
+						*count_ptr += print_custom_S(va_arg(args, char *));
+						break;
 					case '%':
 						*count_ptr += print_percent();
 						break;

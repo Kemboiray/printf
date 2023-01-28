@@ -24,5 +24,7 @@ int print_unsigned_recursive(unsigned int n, int base);
 int print_unsigned_recursive_uppercase(unsigned int n, int base);
 int print_binary(unsigned int n);
 int print_binary_recursion(unsigned int n);
+int print_custom_S(char *s);
+char int_to_hex(int i);
 
 #endif
