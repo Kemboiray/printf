@@ -26,9 +26,14 @@ int arsize(int n)
  */
 int print_int(int n)
 {
-	int digit, size, size2, i;
+	int digit, size, size2, i, sign = n;
 	char *array;
 
+	if (n == INT_MIN)
+	{
+		_printf("-2147483648");
+		return (11);
+	}
 	if (n < 0)
 	{
 		_putchar('-');
@@ -59,7 +64,10 @@ int print_int(int n)
 			_putchar(array[i]);
 	}
 	free(array);
-	return (size2 + 1);
+	if (sign >= 0)
+		return (size2);
+	else
+		return (size2 + 1);
 }
 
 /**
